@@ -1,1 +1,0 @@
-# ch-de-casa-nova
