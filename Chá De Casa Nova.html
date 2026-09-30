@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chá de Casa Nova</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --marrom-escuro: #3b2418;
+            --marrom: #65432f;
+            --marrom-claro: #9a7658;
+            --dourado: #c9a45c;
+            --dourado-claro: #e4c982;
+            --creme: #f8f4ed;
+            --branco: #ffffff;
+            --cinza: #777;
+        }
+
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: var(--creme);
+            color: var(--marrom-escuro);
+        }
+
+        /* CABEÇALHO */
+
+        header {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(59, 36, 24, 0.88),
+                    rgba(59, 36, 24, 0.88)
+                ),
+                radial-gradient(circle at center, #9a7658, #3b2418);
+
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before,
+        header::after {
+            content: "✦";
+            position: absolute;
+            color: var(--dourado-claro);
+            font-size: 70px;
+            opacity: 0.25;
+        }
+
+        header::before {
+            left: 8%;
+            top: 15%;
+        }
+
+        header::after {
+            right: 8%;
+            bottom: 15%;
+        }
+
+        .header-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tag {
+            color: var(--dourado-claro);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(42px, 8vw, 76px);
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .linha-dourada {
+            width: 90px;
+            height: 2px;
+            background: var(--dourado);
+            margin: 25px auto;
+        }
+
+        .subtitulo {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #eee;
+        }
+
+        /* CONTEÚDO */
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 70px 20px;
+        }
+
+        .introducao {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .introducao h2 {
+            font-size: 34px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .introducao p {
+            font-family: Arial, sans-serif;
+            color: var(--cinza);
+            max-width: 650px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* LISTA */
+
+        .lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .presente {
+            background: var(--branco);
+            border: 1px solid #e4d9c8;
+            border-radius: 16px;
+            padding: 28px 24px;
+            position: relative;
+            transition: 0.3s ease;
+            box-shadow: 0 8px 25px rgba(59, 36, 24, 0.07);
+        }
+
+        .presente:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(59, 36, 24, 0.14);
+            border-color: var(--dourado);
+        }
+
+        .numero {
+            position: absolute;
+            right: 18px;
+            top: 15px;
+            color: var(--dourado);
+            font-size: 13px;
+        }
+
+        .icone {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--creme);
+            border: 1px solid var(--dourado-claro);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .presente h3 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 9px;
+        }
+
+        <div style="text-align: center; margin: 40px 0;">
+
+    <a href="presentes.html" class="botao-presentes">
+        Ver lista de presentes
+    </a>
+
+</div>
+
+        .presente p {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            color: var(--cinza);
+            line-height: 1.5;
+        }
+
+        /* BOTÃO */
+
+        .botao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 11px 18px;
+
+            background: var(--marrom-escuro);
+            color: white;
+
+            border-radius: 30px;
+            text-decoration: none;
+
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .botao:hover {
+            background: var(--dourado);
+            color: var(--marrom-escuro);
+        }
+
+        /* INFORMAÇÕES */
+
+        .informacoes {
+            margin-top: 80px;
+            background: var(--marrom-escuro);
+            color: white;
+            border-radius: 20px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        .informacoes h2 {
+            font-size: 30px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .informacoes p {
+            font-family: Arial, sans-serif;
+            color: #ddd;
+            line-height: 1.8;
+        }
+
+        .detalhes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .detalhe strong {
+            display: block;
+            color: var(--dourado-claro);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 7px;
+        }
+
+        /* RODAPÉ */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: #291811;
+            color: #cfcfcf;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+        }
+
+        footer span {
+            color: var(--dourado-claro);
+        }
+
+        /* CELULAR */
+
+        @media (max-width: 600px) {
+
+            header {
+                min-height: 380px;
+            }
+
+            main {
+                padding: 50px 16px;
+            }
+
+            .introducao h2 {
+                font-size: 28px;
+            }
+
+            .lista {
+                grid-template-columns: 1fr;
+            }
+
+            .detalhes {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header>
+
+        <div class="header-content">
+
+            <div class="tag">
+                Chá de Casa Nova
+            </div>
+
+            <h1>
+                Nossa Casa
+            </h1>
+
+            <div class="linha-dourada"></div>
+
+            <p class="subtitulo">
+                Um novo lar, novos sonhos e muitos momentos especiais
+                para viver juntos.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- CONTEÚDO -->
+
+    <main>
+
+        <section class="introducao">
+
+            <h2>
+                Lista de presentes
+            </h2>
+
+            <p>
+                Sua presença já é um presente para nós.
+                Mas, se quiser nos ajudar a deixar nossa casa ainda mais
+                aconchegante, preparamos uma pequena lista com algumas coisas
+                que estamos precisando.
+            </p>
+
+        </section>
+
+
+        <!-- LISTA DE PRESENTES -->
+
+        <section class="lista">
+
+
+            <div class="presente">
+
+                <span class="numero">01</span>
+
+                <div class="icone">
+                    🍳
+                </div>
+
+                <h3>
+                    Jogo de panelas
+                </h3>
+
+                <p>
+                    Um conjunto bonito e resistente para nossa nova cozinha.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">02</span>
+
+                <div class="icone">
+                    🍽️
+                </div>
+
+                <h3>
+                    Jogo de pratos
+                </h3>
+
+                <p>
+                    Pratos para deixar nossas refeições ainda mais especiais.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">03</span>
+
+                <div class="icone">
+                    ☕
+                </div>
+
+                <h3>
+                    Jogo de xícaras
+                </h3>
+
+                <p>
+                    Para aquele café da manhã tranquilo em nossa casa.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">04</span>
+
+                <div class="icone">
+                    🥂
+                </div>
+
+                <h3>
+                    Taças
+                </h3>
+
+                <p>
+                    Para brindarmos às novas histórias que vamos construir.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">05</span>
+
+                <div class="icone">
+                    🧺
+                </div>
+
+                <h3>
+                    Kit de cozinha
+                </h3>
+
+                <p>
+                    Utensílios para deixar nossa cozinha completa.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">06</span>
+
+                <div class="icone">
+                    🛏️
+                </div>
+
+                <h3>
+                    Jogo de cama
+                </h3>
+
+                <p>
+                    Para deixar nosso quarto confortável e aconchegante.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">07</span>
+
+                <div class="icone">
+                    🛁
+                </div>
+
+                <h3>
+                    Jogo de toalhas
+                </h3>
+
+                <p>
+                    Toalhas para deixar nosso banheiro completo.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+            <div class="presente">
+
+                <span class="numero">08</span>
+
+                <div class="icone">
+                    🕯️
+                </div>
+
+                <h3>
+                    Itens de decoração
+                </h3>
+
+                <p>
+                    Pequenos detalhes para deixar nosso novo lar com a nossa cara.
+                </p>
+
+                <a href="#" class="botao">
+                    Quero presentear
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- INFORMAÇÕES DO EVENTO -->
+
+        <section class="informacoes">
+
+            <h2>
+                Será um prazer ter você conosco
+            </h2>
+
+            <p>
+                Venha comemorar esse momento tão especial
+                e conhecer nosso novo lar.
+            </p>
+
+            <div class="detalhes">
+
+                <div class="detalhe">
+                    <strong>Data</strong>
+                    21 de novembro
+                </div>
+
+                <div class="detalhe">
+                    <strong>Horário</strong>
+                    16:00
+                </div>
+
+                <div class="detalhe">
+                    <strong>Local</strong>
+                    indefinido
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer>
+
+        Feito com <span>♥</span> para celebrar um novo começo.
+
+    </footer>
+
+
+</body>
+</html>
